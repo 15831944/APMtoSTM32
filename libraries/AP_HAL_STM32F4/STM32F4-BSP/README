@@ -1,0 +1,27 @@
+140705
+--------------------
+final it works.
+thans to those pioneers.
+http://www.freddiechopin.info/en/download/category/6-examples
+freddi's work helps me most.I add a line "bl __libc_init_array" to run those code for global instances initializing.
+
+little earlier, I found https://answers.launchpad.net/gcc-arm-embedded/+question/210821
+
+before that, i've visited
+http://myavr.chkronline.de/html_stm32/stm32_eclipse_tut10.html
+http://stackoverflow.com/questions/20794890/set-up-linker-for-stm32f4-discovery-and-g
+http://andybrown.me.uk/wk/2011/12/28/stm32plus-a-c-library-for-stm32-development/
+http://myavr.chkronline.de/html_stm32/stm32_eclipse_tut10.html
+for C++ issue.
+
+as for SWO, i refer to
+http://raspberrypi.stackexchange.com/questions/6774/installed-pyusb-still-importerror-no-module-named-core
+https://github.com/karlp/swopy
+http://false.ekta.is/2013/12/using-swoswv-streaming-data-with-stlink-under-linux-part-2/
+
+but I didn't use SWO in the end, in fact I found another way to printf in debug
+http://ncrmnt.org/wp/2013/05/06/stlink-as-a-serial-terminal/#more-1450
+
+140704
+--------------------
+bug found. startup code doesn't support global class initiating before main

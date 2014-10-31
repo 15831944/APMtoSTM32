@@ -1,0 +1,37 @@
+arduporting
+===========
+
+porting APM firmware to STM32F4.
+using ST standard peripherial library so it will be friendly to those rely heavily on std_library.
+
+18/07/14 by taogashi
+------------------------------
+finish implementing UART/Storage/RCin/SPI Driver.
+
+UART: USART6/USART4/USART2 supported, add some code yourself to enable more
+Storage: utilise sector 11 as main page, and sector 10 as swap page. each 128k. but for APM, only 4k actual space is needed, so we are rich. don't worry about your flash duaribility, there are wearing level tech in the Driver.
+RCin: sbus only
+SPI: only SPI2 now, editing BSP source code to enable more
+
+now you can run Blinks/UARTDriver/SPIDriver/RCInput/Storage
+
+11/07/14 by taogashi
+------------------------------
+finish implementing GPIO Schedular Storage UARTDriver.
+
+HowTo
+===============================
+1. you should have a arm-none-eabi toolchain, just google it how to.
+2. understanding Makefile surely helps a lot.
+3. down to <your directory>/arduporting/libraries/AP_HAL_STM32F4/STM32F4_BSP
+   make clean
+   make lib
+4. in <your directory>/arduporting, edit the config.mk. it's easy and I assume that you know how. basicly it's about directories.   maybe you should also edit the mk/board_stm32f4.mk
+5. for example, go to <your directory>/arduporting/libraries/AP_HAL_STM32F4/example/Blinks
+   make clean
+   make stm32f4
+   then if no error, .bin file shoud be right in /tmp/Blinxxx/ in your ubuntu system
+6. download to board
+   st-flash write /tmp/Blink.xx/Blinks.bin 0x08000000
+7. sorry I am a single man, and I am lazy. there are still some part left to be done, i think it will take a long time for me. If you value my work, just rise a pull request. i will be very happy. If encounter any problem, contact me taogashi08@gmail.com
+8. what about the board i use? sorry the MCU is STM32F407IGx, i can't show you the board. but as std_library supports all F4 families, I think it won't bother you to porting to your own board.

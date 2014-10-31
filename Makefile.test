@@ -1,0 +1,7 @@
+include config.mk
+
+TEST := $(wildcard $(STM32F4BSP_PATH)/src)
+
+all:
+	@echo $(STM32F4BSP_PATH)
+	@echo $(TEST)
